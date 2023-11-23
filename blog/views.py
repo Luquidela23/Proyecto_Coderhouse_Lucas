@@ -14,7 +14,7 @@ def about(request):
 
 def lista_articulos(request):
     articulos = Articulo.objects.all()
-    return render(request, 'blog/articulo_lista.html', {'articulos': articulos})
+    return render(request, 'blog/lista_articulo.html', {'articulos': articulos})
 
 def detalle_articulo(request, articulo_id):
     articulo = get_object_or_404(Articulo, pk=articulo_id)
@@ -46,11 +46,11 @@ def editar_articulo(request, articulo_id):
             form = ArticuloForm(instance=articulo)
         return render(request, 'blog/editar_articulo.html', {'form': form})
     else:
-        return redirect('articulo_lista')
+        return redirect('lista_articulos')
 
 @login_required
 def eliminar_articulo(request, articulo_id):
     articulo = get_object_or_404(Articulo, pk=articulo_id)
     if request.user == articulo.autor:
         articulo.delete()
-    return redirect('articulo_lista')
+    return redirect('lista_articulos')
