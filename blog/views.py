@@ -49,7 +49,7 @@ def editar_articulo(request, articulo_id):
         return redirect('articulo_lista')
 
 @login_required
-def borrar_articulo(request, articulo_id):
+def eliminar_articulo(request, articulo_id):
     articulo = get_object_or_404(Articulo, pk=articulo_id)
     if request.user == articulo.autor:
         articulo.delete()
