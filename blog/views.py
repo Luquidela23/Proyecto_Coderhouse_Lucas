@@ -23,7 +23,7 @@ def detalle_articulo(request, articulo_id):
 @login_required
 def crear_articulo(request):
     if request.method == 'POST':
-        form = ArticuloForm(request.POST, request.FILES)
+        form = ArticuloForm(request.POST)
         if form.is_valid():
             articulo = form.save(commit=False)
             articulo.autor = request.user
@@ -38,7 +38,7 @@ def editar_articulo(request, articulo_id):
     articulo = get_object_or_404(Articulo, pk=articulo_id)
     if request.user == articulo.autor:
         if request.method == 'POST':
-            form = ArticuloForm(request.POST, request.FILES, instance=articulo)
+            form = ArticuloForm(request.POST, instance=articulo)
             if form.is_valid():
                 form.save()
                 return redirect('detalle_articulo', articulo_id=articulo.pk)

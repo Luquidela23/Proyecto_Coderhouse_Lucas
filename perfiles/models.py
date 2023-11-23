@@ -7,7 +7,7 @@ class Perfil(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=100, blank=True, null=True)
     apellido = models.CharField(max_length=100, blank=True, null=True)
-    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
+    #avatar = models.ImageField(upload_to='avatars/', blank=True, null=True) no tengo la aplicacion necesaria para este comando
 
     def __str__(self):
         return self.usuario.username

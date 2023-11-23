@@ -5,4 +5,4 @@ from .models import Perfil
 class PerfilForm(UserChangeForm):
     class Meta:
         model = Perfil
-        fields = ['nombre', 'apellido', 'avatar']
+        fields = ['nombre', 'apellido']

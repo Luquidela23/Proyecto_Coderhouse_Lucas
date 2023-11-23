@@ -34,3 +34,16 @@ def perfil(request):
     else:
         form = PerfilForm(instance=request.user.perfil)
     return render(request, 'perfiles/perfil.html', {'form': form})
+
+@login_required
+def editar_perfil(request):
+    perfil = request.user.perfil
+
+    if request.method == 'POST':
+        form = PerfilForm(request.POST, instance=perfil)
+        if form.is_valid():
+            form.save()
+            return redirect('perfil')
+    else:
+        form = PerfilForm(instance=perfil)
+    return render(request, 'perfiles/editar_perfil.html', {'form': form})
