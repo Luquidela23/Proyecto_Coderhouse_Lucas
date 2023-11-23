@@ -1,0 +1,43 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artículos - Mi Blog</title>
+</head>
+<body>
+    <header>
+        <h1>Artículos</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="{% url 'lista_articulos' %}">Artículos</a></li>
+            <li><a href="{% url 'acerca_de' %}">Acerca de</a></li>
+            <!-- Agrega más enlaces según la necesidad de tu aplicación -->
+        </ul>
+    </nav>
+
+    <section>
+        {% if articulos %}
+            {% for articulo in articulos %}
+                <article>
+                    <h2>{{ articulo.titulo }}</h2>
+                    <p>{{ articulo.subtitulo }}</p>
+                    <p>Autor: {{ articulo.autor.username }}</p>
+                    <p>Fecha: {{ articulo.fecha }}</p>
+                    <!-- Puedes agregar más detalles según las propiedades de tu modelo de artículo -->
+
+                    <a href="{% url 'detalle_articulo' pageId=articulo.id %}">Leer más</a>
+                </article>
+            {% endfor %}
+        {% else %}
+            <p>No hay artículos aún.</p>
+        {% endif %}
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Mi Blog. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
