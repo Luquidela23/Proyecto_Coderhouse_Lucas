@@ -28,7 +28,7 @@
                     <p>Fecha: {{ articulo.fecha }}</p>
                     <!-- Puedes agregar más detalles según las propiedades de tu modelo de artículo -->
 
-                    <a href="{% url 'detalle_articulo' pageId=articulo.id %}">Leer más</a>
+                    <a href="{% url 'detalle_articulo' articulo_id=1 %}">Leer más</a>
                 </article>
             {% endfor %}
         {% else %}
