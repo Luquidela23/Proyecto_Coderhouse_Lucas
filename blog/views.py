@@ -12,7 +12,7 @@ def home(request):
 def about(request):
     return render(request, 'blog/about.html')
 
-def articulo_lista(request):
+def lista_articulos(request):
     articulos = Articulo.objects.all()
     return render(request, 'blog/articulo_lista.html', {'articulos': articulos})
 
