@@ -14,7 +14,7 @@ def about(request):
 
 def lista_articulos(request):
     articulos = Articulo.objects.all()
-    return render(request, 'blog/lista_articulo.html', {'articulos': articulos})
+    return render(request, 'blog/lista_articulos.html', {'articulos': articulos})
 
 def detalle_articulo(request, articulo_id):
     articulo = get_object_or_404(Articulo, pk=articulo_id)
