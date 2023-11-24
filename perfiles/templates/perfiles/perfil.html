@@ -25,9 +25,6 @@
         <p><strong>Nombre de Usuario:</strong> {{ user.username }}</p>
         <!-- Agrega más detalles según las propiedades de tu modelo de perfil -->
 
-        {% if user.profile.avatar %}
-            <img src="{{ user.profile.avatar.url }}" alt="Avatar de {{ user.username }}">
-        {% endif %}
     </section>
 
     <footer>

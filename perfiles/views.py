@@ -1,4 +1,4 @@
-from django.shortcuts import render
+
 
 # Create your views here.
 from django.shortcuts import render, redirect
@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .forms import PerfilForm
 from django.contrib.auth import logout
+from .models import Perfil
 
 def registro(request):
     if request.method == 'POST':
@@ -36,9 +37,11 @@ def perfil(request):
         form = PerfilForm(instance=request.user.perfil)
     return render(request, 'perfiles/perfil.html', {'form': form})
 
+
 @login_required
 def editar_perfil(request):
-    perfil = request.user.perfil
+    # Obtener o crear el perfil del usuario
+    perfil, created = Perfil.objects.get_or_create(usuario=request.user)
 
     if request.method == 'POST':
         form = PerfilForm(request.POST, instance=perfil)
@@ -47,6 +50,7 @@ def editar_perfil(request):
             return redirect('perfil')
     else:
         form = PerfilForm(instance=perfil)
+
     return render(request, 'perfiles/editar_perfil.html', {'form': form})
 
 @login_required

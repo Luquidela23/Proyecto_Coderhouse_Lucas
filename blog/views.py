@@ -5,6 +5,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Articulo
 from django.contrib.auth.decorators import login_required
 from .forms import ArticuloForm
+from django.shortcuts import render, redirect
+from .forms import ArticuloForm
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render(request, 'blog/home.html')
@@ -25,13 +28,14 @@ def crear_articulo(request):
     if request.method == 'POST':
         form = ArticuloForm(request.POST)
         if form.is_valid():
-            articulo = form.save(commit=False)
-            articulo.autor = request.user
-            articulo.save()
-            return redirect('detalle_articulo', articulo_id=articulo.pk)
+            nuevo_blog = form.save(commit=False)
+            nuevo_blog.usuario = request.user  # Asociar con el usuario actual
+            nuevo_blog.save()
+            return redirect('nombre_de_la_vista')  # Redirigir a la vista deseada después de crear el blog
     else:
         form = ArticuloForm()
-    return render(request, 'blog/crear_articulo.html', {'form': form})
+
+    return render(request, 'nombre_de_tu_template.html', {'form': form})
 
 @login_required
 def editar_articulo(request, articulo_id):
