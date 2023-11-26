@@ -1,6 +1,6 @@
 
 
-# Create your views here.
+from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -19,12 +19,20 @@ def registro(request):
     return render(request, 'perfiles/registro.html', {'form': form})
 
 def inicio_sesion(request):
+    # Obtener el parámetro opcional 'next' de la URL
+    next_page = request.GET.get('next', 'lista_articulos')
+
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            return redirect('lista_articulos')
+            # Iniciar sesión
+            login(request, form.get_user())
+
+            # Redirigir a la página indicada por 'next'
+            return redirect(next_page)
     else:
         form = AuthenticationForm()
+
     return render(request, 'perfiles/inicio_sesion.html', {'form': form})
 
 @login_required
