@@ -9,15 +9,6 @@
         <h1>Crear Nuevo Artículo</h1>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="{% url 'home' %}">Inicio</a></li>
-            <li><a href="{% url 'lista_articulos' %}">Artículos</a></li>
-            <li><a href="{% url 'about' %}">Acerca de</a></li>
-            <!-- Agrega más enlaces según la necesidad de tu aplicación -->
-        </ul>
-    </nav>
-
     <section>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}

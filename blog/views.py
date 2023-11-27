@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import ArticuloForm
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'blog/home.html')
 
 def about(request):
     return render(request, 'blog/about.html')
@@ -28,11 +28,11 @@ def crear_articulo(request):
             nuevo_articulo = form.save(commit=False)
             nuevo_articulo.autor = request.user  # Asociar con el usuario actual
             nuevo_articulo.save()
-            return redirect('home')  # Redirigir a la vista deseada después de crear el artículo
+            return redirect('blog/home.html')  # Redirigir a la vista deseada después de crear el artículo
     else:
         form = ArticuloForm()
 
-    return render(request, 'home.html', {'form': form})
+    return render(request, 'blog/home.html', {'form': form})
 
 @login_required
 def editar_articulo(request, articulo_id):
