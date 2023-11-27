@@ -11,6 +11,7 @@ Bienvenido a mi proyecto de blog. Aquí encontrarás información sobre cómo co
    python3 mange.py runserver
    
 URLs
+Registrarse: http://localhost:8000/accounts/registro/
 Página de inicio: http://localhost:8000/
 Acerca de: http://localhost:8000/about/
 Lista de artículos: http://localhost:8000/articulos/
