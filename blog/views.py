@@ -20,19 +20,16 @@ def detalle_articulo(request, articulo_id):
     articulo = get_object_or_404(Articulo, pk=articulo_id)
     return render(request, 'blog/detalle_articulo.html', {'articulo': articulo})
 
-@login_required
 def crear_articulo(request):
     if request.method == 'POST':
         form = ArticuloForm(request.POST)
         if form.is_valid():
-            nuevo_articulo = form.save(commit=False)
-            nuevo_articulo.autor = request.user  # Asociar con el usuario actual
-            nuevo_articulo.save()
-            return redirect('blog/home.html')  # Redirigir a la vista deseada después de crear el artículo
+            form.save()
+            return render(request, 'blog/articulo_creado.html')
     else:
         form = ArticuloForm()
 
-    return render(request, 'blog/home.html', {'form': form})
+    return render(request, 'blog/crear_articulo.html', {'form': form})
 
 @login_required
 def editar_articulo(request, articulo_id):

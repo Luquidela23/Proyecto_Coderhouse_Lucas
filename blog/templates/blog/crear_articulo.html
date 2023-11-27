@@ -1,0 +1,23 @@
+<!-- blog/templates/blog/crear_articulo.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Artículo - Mi Blog</title>
+</head>
+<body>
+    <h1>Crear Nuevo Artículo</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Artículo</button>
+    </form>
+
+    <footer>
+        <p>&copy; 2023 Mi Blog. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+
