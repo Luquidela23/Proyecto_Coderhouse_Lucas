@@ -24,6 +24,7 @@ def crear_articulo(request):
     if request.method == 'POST':
         form = ArticuloForm(request.POST)
         if form.is_valid():
+            form.instance.autor = request.user
             form.save()
             return render(request, 'blog/articulo_creado.html')
     else:
