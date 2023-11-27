@@ -6,8 +6,10 @@ Bienvenido a mi proyecto de blog. Aquí encontrarás información sobre cómo co
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/tu-proyecto.git
-   cd tu-proyecto
+   git clone https://github.com/Luquidela23/Proyecto_Coderhouse_Lucas.git
+   cd Mi_Blog
+   python3 mange.py runserver
+   
 URLs
 Página de inicio: http://localhost:8000/
 Acerca de: http://localhost:8000/about/

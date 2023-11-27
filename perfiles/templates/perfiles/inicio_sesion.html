@@ -8,7 +8,7 @@
 
     <h2>Iniciar Sesión</h2>
 
-    <form method="post" action="{% url 'inicio_sesion' %}?next=crear_articulo">
+    <form method="post" action="{% url 'inicio_sesion' %}?next=home">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Iniciar Sesión</button>
